@@ -1,7 +1,39 @@
 public class Car extends Transport <DriverB> {
 
-    public Car(String brand, String model, double engineVolume, DriverB driver) {
+    private CarBody carBody;
+    public enum CarBody {
+        SEDAN ("Седан"),
+        HATCH ("Хэтчбек"),
+        KUPE ("Купе"),
+        UNI ("Универсал"),
+        ALLROAD ("Внедорожник"),
+        KROSS ("Кроссовер"),
+        PIKAP ("Пикап"),
+        FURA ("Фургон"),
+        MINI ("Минивен");
+
+        private String name;
+
+        CarBody(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова: " + name;
+        }
+    }
+    public Car(String brand, String model, double engineVolume, DriverB driver, CarBody carBody) {
         super(brand, model, engineVolume, driver);
+        this.carBody=carBody;
+    }
+
+    public CarBody getCarBody() {
+        return carBody;
+    }
+
+    public void setCarBody(CarBody carBody) {
+        this.carBody = carBody;
     }
 
     @Override
@@ -29,5 +61,21 @@ public class Car extends Transport <DriverB> {
     public void maxSpeed() {
         int i = (int) ((Math.random() * ((250 - 160) + 1)) +160);
         System.out.println("Максимальная скорость для легковой машины " + getBrand() + " " + + i + " км/ч");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " +
+                getCarBody();
+    }
+
+    @Override
+    public void printType() {
+        if (carBody == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        else {
+            System.out.println(carBody);
+        }
     }
 }

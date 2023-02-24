@@ -1,7 +1,39 @@
 public class Truck extends Transport <DriverC> {
+    private TruckBody truckBody;
+    public enum TruckBody {
+        N1 (2),
+        N2 (6),
+        N3 (14);
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver) {
+        private float weight;
+        TruckBody (double weight) {
+            this.weight = (float) weight;
+        }
+
+        @Override
+        public String toString() {
+            if (weight <= 3.5) {
+                return "Грузоподъемность: до 3,5 тонн";}
+            else if (weight > 3.5 && weight <= 12) {
+                return "Грузоподъемность: от 3,5 до 12 тонн";
+            }
+            else {
+                return "Грузоподъемность: от 12 тонн";
+            }
+        }
+    }
+
+    public Truck(String brand, String model, double engineVolume, DriverC driver, TruckBody truckBody) {
         super(brand, model, engineVolume, driver);
+        this.truckBody = truckBody;
+    }
+
+    public TruckBody getTruckBody() {
+        return truckBody;
+    }
+
+    public void setTruckBody(TruckBody truckBody) {
+        this.truckBody = truckBody;
     }
 
     @Override
@@ -29,5 +61,17 @@ public class Truck extends Transport <DriverC> {
     public void maxSpeed() {
         int i = (int) ((Math.random() * ((160 - 120) + 1)) +120);
         System.out.println("Максимальная скорость для грузовой машины " + getBrand() + " " + + i + " км/ч");
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + getTruckBody();
+    }
+    public void printType() {
+        if (truckBody == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(truckBody);
+        }
     }
 }
