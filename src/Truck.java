@@ -74,4 +74,9 @@ public class Truck extends Transport <DriverC> {
             System.out.println(truckBody);
         }
     }
+
+    @Override
+    public void diagnostic() {
+        System.out.println("Диагностика грузовика пройдена");
+    }
 }

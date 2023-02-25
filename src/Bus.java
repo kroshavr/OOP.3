@@ -84,4 +84,9 @@ public class Bus extends Transport <DriverD> {
             System.out.println(busPlaces);
         }
     }
+
+    @Override
+    public void diagnostic() throws TransportTypeException {
+        throw new TransportTypeException("Автобусы диагностику проходить не должны!");
+    }
 }

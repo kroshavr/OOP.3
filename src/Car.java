@@ -78,4 +78,9 @@ public class Car extends Transport <DriverB> {
             System.out.println(carBody);
         }
     }
+
+    @Override
+    public void diagnostic() {
+        System.out.println("Диагностика автомобиля пройдена");
+    }
 }

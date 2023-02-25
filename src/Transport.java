@@ -33,6 +33,8 @@ public abstract class Transport <T extends Driver> implements Competing {
     public abstract void startMoving();
     public abstract void stopMoving();
     public abstract void printType();
+    public void diagnostic() throws TransportTypeException {
+    }
 
     @Override
     public String toString() {
