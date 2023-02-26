@@ -63,5 +63,4 @@ public class Main {
     public static void info(Transport<?> transport) {
           System.out.println(transport.getDriver().getName() + " управляет автомобилем " + transport.getBrand() + ". Обслуживает автомобиль " + transport.getMechanics());
     }
-
 }

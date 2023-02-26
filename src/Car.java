@@ -1,5 +1,4 @@
 public class Car extends Transport <DriverB> {
-
     private CarBody carBody;
     public enum CarBody {
         SEDAN ("Седан"),

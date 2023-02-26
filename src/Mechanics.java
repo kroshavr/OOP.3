@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 public class Mechanics {
     private final String name;
     private final String company;

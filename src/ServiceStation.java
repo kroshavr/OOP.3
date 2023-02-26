@@ -3,7 +3,6 @@ import java.util.Queue;
 
 public class ServiceStation {
     private Queue<Transport> infoAuto;
-
     public ServiceStation(Queue<Transport> infoAuto) {
         this.infoAuto = infoAuto;
     }

@@ -9,7 +9,6 @@ public class Truck extends Transport <DriverC> {
         TruckBody (double weight) {
             this.weight = (float) weight;
         }
-
         @Override
         public String toString() {
             if (weight <= 3.5) {

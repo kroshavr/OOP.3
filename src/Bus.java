@@ -12,7 +12,6 @@ public class Bus extends Transport <DriverD> {
         BusPlaces (Integer places) {
             this.places = places;
         }
-
         @Override
         public String toString() {
             if (places <= 10) {
