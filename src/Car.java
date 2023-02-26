@@ -23,8 +23,8 @@ public class Car extends Transport <DriverB> {
             return "Тип кузова: " + name;
         }
     }
-    public Car(String brand, String model, double engineVolume, DriverB driver, CarBody carBody) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, double engineVolume, DriverB driver, Mechanics mechanics, CarBody carBody) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.carBody=carBody;
     }
 
@@ -65,8 +65,7 @@ public class Car extends Transport <DriverB> {
 
     @Override
     public String toString() {
-        return super.toString() + ", " +
-                getCarBody();
+        return super.toString() + getDriver();
     }
 
     @Override

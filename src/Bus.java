@@ -32,8 +32,8 @@ public class Bus extends Transport <DriverD> {
             }
         }
     }
-    public Bus(String brand, String model, double engineVolume, DriverD driver, BusPlaces busPlaces) {
-        super(brand, model, engineVolume, driver);
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Mechanics mechanics, BusPlaces busPlaces) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.busPlaces = busPlaces;
     }
 
@@ -74,7 +74,7 @@ public class Bus extends Transport <DriverD> {
 
     @Override
     public String toString() {
-        return super.toString() + ", " + getBusPlaces();
+        return super.toString();
     }
 
     public void printType() {

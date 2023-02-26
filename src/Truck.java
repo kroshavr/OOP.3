@@ -23,8 +23,8 @@ public class Truck extends Transport <DriverC> {
         }
     }
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver, TruckBody truckBody) {
-        super(brand, model, engineVolume, driver);
+    public Truck(String brand, String model, double engineVolume, DriverC driver, Mechanics mechanics, TruckBody truckBody) {
+        super(brand, model, engineVolume, driver, mechanics);
         this.truckBody = truckBody;
     }
 
@@ -65,7 +65,7 @@ public class Truck extends Transport <DriverC> {
 
     @Override
     public String toString() {
-        return super.toString() + ", " + getTruckBody();
+        return super.toString();
     }
     public void printType() {
         if (truckBody == null) {
