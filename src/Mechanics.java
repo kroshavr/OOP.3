@@ -27,6 +27,6 @@ public class Mechanics {
 
     @Override
     public String toString() {
-        return "механик " + name;
+        return "механик " + getName();
     }
 }

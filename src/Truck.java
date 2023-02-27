@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Truck extends Transport <DriverC> {
     private TruckBody truckBody;
     public enum TruckBody {
@@ -22,8 +24,8 @@ public class Truck extends Transport <DriverC> {
         }
     }
 
-    public Truck(String brand, String model, double engineVolume, DriverC driver, Mechanics mechanics, TruckBody truckBody) {
-        super(brand, model, engineVolume, driver, mechanics);
+    public Truck(String brand, String model, double engineVolume, DriverC driver, List<Mechanics> mechanicsList, TruckBody truckBody) {
+        super(brand, model, engineVolume, driver, mechanicsList);
         this.truckBody = truckBody;
     }
 

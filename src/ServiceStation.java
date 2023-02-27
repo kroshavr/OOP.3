@@ -8,11 +8,13 @@ public class ServiceStation {
     }
 
     public void addToQueue (Transport transport) {
-        if (transport.getClass() != Bus.class) {
-            infoAuto.add(transport);
+        if (transport.needService()) {
+            infoAuto.offer(transport);
         }
     }
     public void technicalInspection () {
-        infoAuto.remove();
+        while (infoAuto.poll() != null) {
+            System.out.println(infoAuto.poll());
+        }
     }
 }
