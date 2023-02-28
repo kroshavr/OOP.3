@@ -43,18 +43,6 @@ public class Main {
         info(bus1);
         info(bus2);
 
-        Queue<Transport> infoAuto = new LinkedList<>();
-        infoAuto.add(car1);
-        infoAuto.add(car2);
-        infoAuto.add(truck1);
-        infoAuto.add(truck2);
-        infoAuto.add(bus1);
-        infoAuto.add(bus2);
-
-        ServiceStation serviceStation = new ServiceStation();
-        serviceStation.addToQueue(car2);
-        serviceStation.technicalInspection(car2);
-
 //        car1.diagnostic();
 //        truck1.diagnostic();
 //        try {
@@ -63,6 +51,26 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 
+        Queue<Transport> infoAuto = new LinkedList<>();
+        infoAuto.add(car1);
+        infoAuto.add(car2);
+        infoAuto.add(truck1);
+        infoAuto.add(truck2);
+        infoAuto.add(bus1);
+        infoAuto.add(bus2);
+
+        car1.needService();
+        car2.needService();
+        truck1.needService();
+        truck2.needService();
+        bus1.needService();
+        bus2.needService();
+
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addToQueue(car2);
+        serviceStation.addToQueue(truck1);
+        serviceStation.technicalInspection(car2);
+        serviceStation.technicalInspection(bus1);
     }
 
     public static void info(Transport<?> transport) {

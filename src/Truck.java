@@ -78,6 +78,6 @@ public class Truck extends Transport <DriverC> {
 
     @Override
     public void diagnostic() {
-        System.out.println("Диагностика грузовика пройдена");
+ //       System.out.println("Диагностика грузовика " + getBrand() + " пройдена");
     }
 }

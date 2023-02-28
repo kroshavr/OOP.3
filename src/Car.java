@@ -81,6 +81,6 @@ public class Car extends Transport <DriverB> {
 
     @Override
     public void diagnostic() {
-        System.out.println("Диагностика автомобиля пройдена");
+ //       System.out.println("Диагностика автомобиля " + getBrand() + " пройдена");
     }
 }
