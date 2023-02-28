@@ -51,6 +51,10 @@ public class Main {
         infoAuto.add(bus1);
         infoAuto.add(bus2);
 
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addToQueue(car2);
+        serviceStation.technicalInspection(car2);
+
 //        car1.diagnostic();
 //        truck1.diagnostic();
 //        try {
