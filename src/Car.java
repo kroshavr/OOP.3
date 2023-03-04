@@ -1,123 +1,86 @@
-public class Car {
-    private final  String brand;
-    private final String model;
-    private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
-    private String transmission;
-    private final String carBody;
-    private String numberOfTheCar;
-    private final int numberOfSeats;
-    private String tires;
+import java.util.List;
 
-    class Key {
-        private final boolean remoteEngineStart;
-        private final boolean keylessAccess;
+public class Car extends Transport <DriverB> {
+    private CarBody carBody;
+    public enum CarBody {
+        SEDAN ("Седан"),
+        HATCH ("Хэтчбек"),
+        KUPE ("Купе"),
+        UNI ("Универсал"),
+        ALLROAD ("Внедорожник"),
+        KROSS ("Кроссовер"),
+        PIKAP ("Пикап"),
+        FURA ("Фургон"),
+        MINI ("Минивен");
 
-        public Key (boolean remoteEngineStart, boolean keylessAccess) {
-            this.remoteEngineStart = remoteEngineStart;
-            this.keylessAccess = keylessAccess;
+        private String name;
+
+        CarBody(String name) {
+            this.name = name;
         }
 
         @Override
         public String toString() {
-            return "Удаленный запуск двигателя - " + (remoteEngineStart ? "есть" : "нет") +
-                    ", бесключевой доступ - " + (keylessAccess ? "есть" : "нет");
+            return "Тип кузова: " + name;
         }
     }
-
-    public Car(String brand, String model, double engineVolume, String color, int year, String country, String transmission,
-               String carBody, String numberOfTheCar, int numberOfSeats, String tires) {
-        this.brand = brand == null || brand.isBlank() || brand.isEmpty() ? "Default" : brand;
-        this.model = model == null || model.isBlank() || model.isEmpty() ? "Default" : model;
-        this.engineVolume = engineVolume <= 0 ? 1.5 : engineVolume;
-        this.color = color == null || color.isBlank() || color.isEmpty() ? "белый" : color;
-        this.year = year <= 0 ? 2000 : year;
-        this.country = country == null || country.isBlank() || country.isEmpty() ? "Default" : country;
-        this.transmission = transmission == null || transmission.isBlank() || transmission.isEmpty() ? "механический" : transmission;
-        this.carBody = carBody == null || carBody.isBlank() || carBody.isEmpty() ? "седан" : carBody;
-        this.numberOfTheCar = numberOfTheCar == null || numberOfTheCar.isBlank() || numberOfTheCar.isEmpty() ? "Default" : numberOfTheCar;
-        this.numberOfSeats = numberOfSeats <= 0 ? 5 : numberOfSeats;
-        this.tires = tires == null || tires.isBlank() || tires.isEmpty() ? "летняя" : tires;
+    public Car(String brand, String model, double engineVolume, DriverB driver, List<Mechanics> mechanicsList, CarBody carBody) {
+        super(brand, model, engineVolume, driver, mechanicsList);
+        this.carBody=carBody;
     }
 
-    public void choiceOfTires (int month) {
-        if (month >= 4 && month < 10) {
-            setTires("летняя");
-        }
-        else setTires("зимняя");
-    }
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public void setTransmission(String transmission) {
-        this.transmission = transmission;
-    }
-
-    public String getCarBody() {
+    public CarBody getCarBody() {
         return carBody;
     }
 
-    public String getNumberOfTheCar() {
-        return numberOfTheCar;
+    public void setCarBody(CarBody carBody) {
+        this.carBody = carBody;
     }
 
-    public void setNumberOfTheCar(String numberOfTheCar) {
-        this.numberOfTheCar = numberOfTheCar;
+    @Override
+    public void startMoving() {
+        System.out.println("Легковая машина " + getBrand() + " начинает движение");
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+    @Override
+    public void stopMoving() {
+        System.out.println("Легковая машина " + getBrand() + " заканчивает движение");
     }
 
-    public String getTires() {
-        return tires;
+    @Override
+    public void pitStop() {
+        System.out.println("Пит-стоп для легковой машины " + getBrand());
     }
 
-    public void setTires(String tires) {
-        this.tires = tires;
+    @Override
+    public void bestLapTime() {
+        int i = (int) ((Math.random() * ((60 - 30) + 1)) + 30);
+        System.out.println("Лучшее время круга для легковой машины " + getBrand() + " " + i + " мин");
+    }
+
+    @Override
+    public void maxSpeed() {
+        int i = (int) ((Math.random() * ((250 - 160) + 1)) +160);
+        System.out.println("Максимальная скорость для легковой машины " + getBrand() + " " + + i + " км/ч");
     }
 
     @Override
     public String toString() {
-        return getBrand() + " " + getModel() + ", объем двигателя - " +
-                getEngineVolume() + "л., цвет кузова - " + getColor() +
-                ", год выпуска - " + getYear() + ", страна-производитель - " + getCountry() +
-                ", коробка передач - " + getTransmission() + ", тип кузова - " + getCarBody() +
-                ", номер мащины - " + getNumberOfTheCar() + ", количество мест - " + getNumberOfSeats() + ", резина -" + getTires();
+        return super.toString() + getDriver();
+    }
+
+    @Override
+    public void printType() {
+        if (carBody == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        else {
+            System.out.println(carBody);
+        }
+    }
+
+    @Override
+    public void diagnostic() {
+ //       System.out.println("Диагностика автомобиля " + getBrand() + " пройдена");
     }
 }
