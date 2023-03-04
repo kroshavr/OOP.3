@@ -43,13 +43,18 @@ public class Main {
         info(bus1);
         info(bus2);
 
-//        car1.diagnostic();
-//        truck1.diagnostic();
-//        try {
-//            bus1.diagnostic();
-//        } catch (TransportTypeException e) {
-//            throw new RuntimeException(e);
-//        }
+        car1.diagnostic();
+        truck1.diagnostic();
+        try {
+            bus1.diagnostic();
+        } catch (TransportTypeException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            bus2.diagnostic();
+        } catch (TransportTypeException e) {
+            throw new RuntimeException(e);
+        }
 
         Queue<Transport> infoAuto = new LinkedList<>();
         infoAuto.add(car1);
@@ -67,9 +72,9 @@ public class Main {
         bus2.needService();
 
         ServiceStation serviceStation = new ServiceStation();
-        serviceStation.addToQueue(car2);
-        serviceStation.addToQueue(truck1);
-        serviceStation.technicalInspection(car2);
+        serviceStation.addToQueue(car1);
+        serviceStation.addToQueue(bus1);
+        serviceStation.technicalInspection(car1);
         serviceStation.technicalInspection(bus1);
     }
 
